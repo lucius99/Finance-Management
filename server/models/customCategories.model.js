@@ -11,14 +11,9 @@ const CustomCategoriesSchema = new mongoose.Schema({
     required: true,
     ref: "Icons",
   },
-  custom_parent_id: {
-    type: ObjectId,
-    ref: "CustomCategories",
-    default: null,
-  },
   parent_id: {
     type: ObjectId,
-    ref: "Categories",
+    refPath: "onModel",
     default: null,
   },
   type: {
@@ -29,6 +24,10 @@ const CustomCategoriesSchema = new mongoose.Schema({
     type: ObjectId,
     required: true,
     ref: "Users",
+  },
+  onModel: {
+    type: String,
+    enum: ["Categories", "CustomCategories", null],
   },
 });
 module.exports = mongoose.model("CustomCategories", CustomCategoriesSchema);

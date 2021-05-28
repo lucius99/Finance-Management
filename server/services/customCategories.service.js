@@ -9,16 +9,16 @@ createCustomCategory = async (
   icon_id,
   type,
   parent_id,
-  custom_parent_id,
-  user_id
+  user_id,
+  onModel
 ) => {
   let result = await CustomCategories.create({
     name,
     icon_id,
     type,
     parent_id,
-    custom_parent_id,
     user_id,
+    onModel,
   });
   return { result, status: true };
 };
