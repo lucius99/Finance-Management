@@ -5,5 +5,6 @@ const controller = require("../controllers/categories.controller");
 
 // Create new default category
 router.post("/create", controller.addNewCategoryController);
+router.get("/:category_id", controller.getCategoryInfoByIdController);
 
 module.exports = router;

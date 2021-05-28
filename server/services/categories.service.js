@@ -14,8 +14,25 @@ createCategory = async (name, icon_id, type, parent_id = null) => {
   return { result, status: true };
 };
 
+// Get info about category by ID
+getCategoryInfoById = async (category_id) => {
+  let result = await Categories.findOne({ _id: category_id }, (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+  })
+    .populate({ path: "icon_id", select: "-_id -__v" })
+    .select("-__v");
+
+  if (!result) {
+    return { status: false, message: "Something went wrong" };
+  }
+  return { status: true, result: result };
+};
+
 const categoriesService = {
   createCategory,
+  getCategoryInfoById,
 };
 
 module.exports = categoriesService;

@@ -27,7 +27,8 @@ const UsersSchema = new mongoose.Schema({
     required: true,
     default: "",
   },
-  category_list: [{ type: ObjectId, refPath: "Categories" }],
+  category_list: [{ type: ObjectId, ref: "Categories" }],
   custom_category_list: [{ type: ObjectId, ref: "CustomCategories" }],
+  edit_default_category: [{ type: Object }],
 });
 module.exports = mongoose.model("Users", UsersSchema);

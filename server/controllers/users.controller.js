@@ -33,3 +33,13 @@ exports.addNewUser = async (req, res) => {
     message: "Add User Successfully",
   });
 };
+
+// Get User info by ID
+exports.getUserInfoByIdController = async (req, res) => {
+  let user_id = req.params.user_id;
+  let result = await usersService.getUserInfoById(user_id);
+  if (!result.status) {
+    return res.status(400).json({ status: false, message: result.message });
+  }
+  return res.status(200).json({ status: true, result: result.result });
+};

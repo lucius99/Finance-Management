@@ -22,3 +22,13 @@ exports.addNewCategoryController = async (req, res) => {
     message: "Add Category Successfully",
   });
 };
+
+// Get Category Info by ID
+exports.getCategoryInfoByIdController = async (req, res) => {
+  let category_id = req.params.category_id;
+  let result = await categoriesService.getCategoryInfoById(category_id);
+  if (!result.status) {
+    return res.status(400).json({ status: false, message: result.message });
+  }
+  return res.status(200).json({ status: true, result: result.result });
+};

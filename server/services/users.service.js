@@ -20,13 +20,30 @@ createUser = async (
     numberPhone,
     email,
     category_list,
-    custom_category_list
+    custom_category_list,
   });
   return { result, status: true };
 };
 
+// Get user info by ID
+getUserInfoById = async (user_id) => {
+  let result = await Users.findOne({ _id: user_id }, (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+  })
+    .populate({ path: "category_list", select: "-__v" })
+    .select("-__v");
+
+  if (!result) {
+    return { status: false, message: "Something went wrong" };
+  }
+  return { status: true, result: result };
+};
+
 const usersService = {
   createUser,
+  getUserInfoById,
 };
 
 module.exports = usersService;
