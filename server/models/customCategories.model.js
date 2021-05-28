@@ -14,10 +14,12 @@ const CustomCategoriesSchema = new mongoose.Schema({
   custom_parent_id: {
     type: ObjectId,
     ref: "CustomCategories",
+    default: null,
   },
   parent_id: {
     type: ObjectId,
     ref: "Categories",
+    default: null,
   },
   type: {
     type: String,
@@ -26,7 +28,7 @@ const CustomCategoriesSchema = new mongoose.Schema({
   user_id: {
     type: ObjectId,
     required: true,
-    ref: "User",
+    ref: "Users",
   },
 });
 module.exports = mongoose.model("CustomCategories", CustomCategoriesSchema);
