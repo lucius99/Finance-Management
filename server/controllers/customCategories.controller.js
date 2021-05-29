@@ -24,3 +24,13 @@ exports.addNewCustomCategoryController = async (req, res) => {
     message: "Add Custom Category Successfully",
   });
 };
+
+// Get Category Info by ID
+exports.getCustomCategoryInfoByIdController = async (req, res) => {
+  let category_id = req.params.category_id;
+  let result = await customCategoriesService.getCustomCategoryInfoById(category_id);
+  if (!result.status) {
+    return res.status(400).json({ status: false, message: result.message });
+  }
+  return res.status(200).json({ status: true, result: result.result });
+};
