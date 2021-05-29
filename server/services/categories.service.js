@@ -24,6 +24,22 @@ getCategoryInfoById = async (category_id) => {
     .populate({ path: "icon_id", select: "-_id -__v" })
     .select("-__v");
 
+
+  // ------------add new field in mongoDB-------------------
+  // Categories.updateMany(
+  //   {},
+  //   [
+  //     {
+  //       $set: {
+  //         friend: [],
+  //       },
+  //     },
+  //   ],
+  //   function (err, raw) {
+  //     if (err) return handleError(err);
+  //     console.log("The raw response from Mongo was ", raw);
+  //   }
+  // );
   if (!result) {
     return { status: false, message: "Something went wrong" };
   }
