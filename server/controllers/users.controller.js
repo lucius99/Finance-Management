@@ -9,6 +9,7 @@ exports.addNewUser = async (req, res) => {
     email,
     category_list,
     custom_category_list,
+    edit_default_category,
   } = req.body;
   let { result, status } = await usersService.createUser(
     name,
@@ -18,6 +19,7 @@ exports.addNewUser = async (req, res) => {
     email,
     category_list,
     custom_category_list,
+    edit_default_category,
   );
 
   if (!status) {

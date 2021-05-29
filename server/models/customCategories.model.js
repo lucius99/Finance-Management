@@ -27,7 +27,6 @@ const CustomCategoriesSchema = new mongoose.Schema({
   },
   onModel: {
     type: String,
-    enum: ["Categories", "CustomCategories", null],
   },
 });
 module.exports = mongoose.model("CustomCategories", CustomCategoriesSchema);

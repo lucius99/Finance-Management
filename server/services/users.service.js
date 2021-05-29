@@ -11,7 +11,8 @@ createUser = async (
   numberPhone,
   email,
   category_list,
-  custom_category_list
+  custom_category_list,
+  edit_default_category
 ) => {
   let result = await Users.create({
     name,
@@ -21,6 +22,7 @@ createUser = async (
     email,
     category_list,
     custom_category_list,
+    edit_default_category,
   });
   return { result, status: true };
 };
@@ -33,6 +35,7 @@ getUserInfoById = async (user_id) => {
     }
   })
     .populate({ path: "category_list", select: "-__v" })
+    .populate({ path: "custom_category_list", select: "-__v" })
     .select("-__v");
 
   if (!result) {
