@@ -101,7 +101,7 @@ pullAndPushManyDefaultCategory = async (user_id, edited_categories) => {
 
   // if edited category still in default category. Then update
   if (category_id_list.length > 0)
-    await Users.updateMany(
+    await Users.updateOne(
       { _id: user_id },
       update(new_edited_default_category, category_id_list)
     )
@@ -145,6 +145,14 @@ deleteManyDefaultCategory = async (user_id, category_id_list) => {
   let default_categories_in_DB = userInfo.category_list;
   let edited_default_category_in_DB = userInfo.edited_default_category;
 
+  const filter = { _id: user_id };
+  const update = {
+    $pull: {
+      category_list: { $in: default_category_id_list },
+      edited_default_category: { $in: edited_default_category_list },
+    },
+  };
+
   // Make an array of edited default category ID
   for (let item of edited_default_category_in_DB) {
     edited_default_category_id_in_DB.push(item._id);
@@ -170,15 +178,7 @@ deleteManyDefaultCategory = async (user_id, category_id_list) => {
     default_category_id_list.length > 0 ||
     edited_default_category_list.length > 0
   )
-    await Users.updateMany(
-      { _id: user_id },
-      {
-        $pull: {
-          category_list: { $in: default_category_id_list },
-          edited_default_category: { $in: edited_default_category_list },
-        },
-      }
-    )
+    await Users.updateOne(filter, update)
       .then((data) => {
         if (data.nModified > 0) countModified++;
       })

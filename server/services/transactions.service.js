@@ -62,16 +62,16 @@ insertManyTransactions = async (transactions) => {
 };
 
 // Delete multiple document into DB
-deleteManyTransactions = async (transactions) => {
+deleteManyTransactions = async (transactions_id) => {
   let result;
-  await Transactions.deleteMany({ _id: { $in: transactions } })
+  await Transactions.deleteMany({ _id: { $in: transactions_id } })
     .then((data) => {
       if (data.deletedCount > 0) {
         result = { status: true, message: "Successfully Delete Transactions" };
       } else
         result = {
           status: true,
-          message: "There are no transactions to deleted",
+          message: "There are no transactions to delete",
         };
     })
     .catch((err) => {
@@ -92,6 +92,7 @@ updateManyTransactions = async (transactions) => {
         description: item.description,
         created_at: item.created_at,
         currency_type: item.currency_type,
+        groups: item.groups,
       },
     };
   };

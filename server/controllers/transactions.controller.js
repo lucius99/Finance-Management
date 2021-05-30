@@ -60,8 +60,8 @@ exports.insertTransactionsController = async (req, res) => {
 
 // Delete Array Of Transactions
 exports.deleteTransactionsController = async (req, res) => {
-  let { transactions } = req.body;
-  let result = await transactionsService.deleteManyTransactions(transactions);
+  let { transactions_id } = req.body;
+  let result = await transactionsService.deleteManyTransactions(transactions_id);
   if (!result.status) {
     return res.status(400).json({ status: false, message: result.message });
   }
