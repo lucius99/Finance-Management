@@ -5,6 +5,7 @@ const Transactions = db.transactions;
 
 // Use to create new transacions
 createTransaction = async (
+  _id,
   category_id,
   user_id,
   money,
@@ -15,6 +16,7 @@ createTransaction = async (
   groups
 ) => {
   let result = await Transactions.create({
+    _id,
     category_id,
     user_id,
     money,

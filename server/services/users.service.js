@@ -5,6 +5,7 @@ const Users = db.users;
 
 // Use to create new default category (parent or child)
 createUser = async (
+  _id,
   name,
   age,
   gender,
@@ -15,6 +16,7 @@ createUser = async (
   edit_default_category
 ) => {
   let result = await Users.create({
+    _id,
     name,
     age,
     gender,

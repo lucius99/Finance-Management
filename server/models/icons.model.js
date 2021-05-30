@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
 
 const IconsSchema = new mongoose.Schema({
+  _id: {
+    type: ObjectId,
+  },
   icon_name: {
     type: String,
     required: true,

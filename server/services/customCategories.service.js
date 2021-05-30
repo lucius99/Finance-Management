@@ -5,6 +5,7 @@ const CustomCategories = db.customCategories;
 
 // Use to create new custom category (parent or child)
 createCustomCategory = async (
+  _id,
   name,
   icon_id,
   type,
@@ -13,6 +14,7 @@ createCustomCategory = async (
   onModel
 ) => {
   let result = await CustomCategories.create({
+    _id,
     name,
     icon_id,
     type,
@@ -25,11 +27,14 @@ createCustomCategory = async (
 
 // Get info about category by ID
 getCustomCategoryInfoById = async (category_id) => {
-  let result = await CustomCategories.findOne({ _id: category_id }, (err, data) => {
-    if (err) {
-      console.log(err);
+  let result = await CustomCategories.findOne(
+    { _id: category_id },
+    (err, data) => {
+      if (err) {
+        console.log(err);
+      }
     }
-  })
+  )
     .populate({ path: "icon_id", select: "-_id -__v" })
     .populate({ path: "parent_id", select: "-_id -__v" })
     .select("-__v");

@@ -2,6 +2,7 @@ const transactionsService = require("../services/transactions.service");
 
 exports.addNewTransactionController = async (req, res) => {
   let {
+    _id,
     category_id,
     user_id,
     money,
@@ -12,6 +13,7 @@ exports.addNewTransactionController = async (req, res) => {
     groups,
   } = req.body;
   let { result, status } = await transactionsService.createTransaction(
+    _id,
     category_id,
     user_id,
     money,

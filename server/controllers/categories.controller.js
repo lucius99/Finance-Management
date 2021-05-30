@@ -1,8 +1,9 @@
 const categoriesService = require("../services/categories.service");
 
 exports.addNewCategoryController = async (req, res) => {
-  let { name, icon_id, type, parent_id } = req.body;
+  let {_id, name, icon_id, type, parent_id } = req.body;
   let { result, status } = await categoriesService.createCategory(
+    _id,
     name,
     icon_id,
     type,

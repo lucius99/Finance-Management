@@ -1,8 +1,9 @@
 const iconsService = require("../services/icons.service");
 
 exports.addNewIconController = async (req, res) => {
-  let { icon_name, color, bg_color, alias } = req.body;
+  let { _id, icon_name, color, bg_color, alias } = req.body;
   let { result, status } = await iconsService.createIcon(
+    _id,
     icon_name,
     color,
     bg_color,

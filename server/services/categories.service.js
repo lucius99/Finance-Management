@@ -4,8 +4,9 @@ const db = require("../models");
 const Categories = db.categories;
 
 // Use to create new default category (parent or child)
-createCategory = async (name, icon_id, type, parent_id = null) => {
+createCategory = async (_id, name, icon_id, type, parent_id = null) => {
   let result = await Categories.create({
+    _id,
     name,
     icon_id,
     type,
@@ -23,7 +24,6 @@ getCategoryInfoById = async (category_id) => {
   })
     .populate({ path: "icon_id", select: "-_id -__v" })
     .select("-__v");
-
 
   // ------------add new field in mongoDB-------------------
   // Categories.updateMany(

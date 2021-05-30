@@ -4,8 +4,9 @@ const db = require("../models");
 const Icons = db.icons;
 
 // Use to create new default category (parent or child)
-createIcon = async (icon_name, color, bg_color, alias) => {
+createIcon = async (_id, icon_name, color, bg_color, alias) => {
   let result = await Icons.create({
+    _id,
     icon_name,
     color,
     bg_color,

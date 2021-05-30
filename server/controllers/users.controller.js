@@ -2,6 +2,7 @@ const usersService = require("../services/users.service");
 
 exports.addNewUser = async (req, res) => {
   let {
+    _id,
     name,
     age,
     gender,
@@ -12,6 +13,7 @@ exports.addNewUser = async (req, res) => {
     edit_default_category,
   } = req.body;
   let { result, status } = await usersService.createUser(
+    _id,
     name,
     age,
     gender,
@@ -19,7 +21,7 @@ exports.addNewUser = async (req, res) => {
     email,
     category_list,
     custom_category_list,
-    edit_default_category,
+    edit_default_category
   );
 
   if (!status) {

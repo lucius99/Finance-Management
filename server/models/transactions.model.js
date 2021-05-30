@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
 
 const TransactionsSchema = new mongoose.Schema({
+  _id: {
+    type: ObjectId,
+  },
   category_id: {
     type: ObjectId,
     required: true,

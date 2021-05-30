@@ -1,8 +1,9 @@
 const customCategoriesService = require("../services/customCategories.service");
 
 exports.addNewCustomCategoryController = async (req, res) => {
-  let { name, icon_id, type, parent_id, user_id, onModel } = req.body;
+  let { _id, name, icon_id, type, parent_id, user_id, onModel } = req.body;
   let { result, status } = await customCategoriesService.createCustomCategory(
+    _id,
     name,
     icon_id,
     type,
@@ -28,7 +29,9 @@ exports.addNewCustomCategoryController = async (req, res) => {
 // Get Category Info by ID
 exports.getCustomCategoryInfoByIdController = async (req, res) => {
   let category_id = req.params.category_id;
-  let result = await customCategoriesService.getCustomCategoryInfoById(category_id);
+  let result = await customCategoriesService.getCustomCategoryInfoById(
+    category_id
+  );
   if (!result.status) {
     return res.status(400).json({ status: false, message: result.message });
   }
