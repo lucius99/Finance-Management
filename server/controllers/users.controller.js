@@ -60,3 +60,16 @@ exports.pullAndPushDefaultCategory = async (req, res) => {
   }
   return res.status(200).json({ status: true, result: result.message });
 };
+
+// Delete many default category
+exports.deleteDefaultCategory = async (req, res) => {
+  let { user_id, category_id_list } = req.body;
+  let result = await usersService.deleteManyDefaultCategory(
+    user_id,
+    category_id_list
+  );
+  if (!result.status) {
+    return res.status(400).json({ status: false, message: result.message });
+  }
+  return res.status(200).json({ status: true, result: result.message });
+};
