@@ -47,3 +47,33 @@ exports.getTransacionInfoByIdController = async (req, res) => {
   }
   return res.status(200).json({ status: true, result: result.result });
 };
+
+// Add Array Of Transactions
+exports.insertTransactionsController = async (req, res) => {
+  let { transactions } = req.body;
+  let result = await transactionsService.insertManyTransactions(transactions);
+  if (!result.status) {
+    return res.status(400).json({ status: false, message: result.message });
+  }
+  return res.status(200).json({ status: true, message: result.message });
+};
+
+// Delete Array Of Transactions
+exports.deleteTransactionsController = async (req, res) => {
+  let { transactions } = req.body;
+  let result = await transactionsService.deleteManyTransactions(transactions);
+  if (!result.status) {
+    return res.status(400).json({ status: false, message: result.message });
+  }
+  return res.status(200).json({ status: true, message: result.message });
+};
+
+// Update Array Of Transactions
+exports.updateTransactionsController = async (req, res) => {
+  let { transactions } = req.body;
+  let result = await transactionsService.updateManyTransactions(transactions);
+  if (!result.status) {
+    return res.status(400).json({ status: false, message: result.message });
+  }
+  return res.status(200).json({ status: true, message: result.message });
+};
