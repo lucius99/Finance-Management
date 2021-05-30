@@ -10,7 +10,7 @@ exports.addNewUser = async (req, res) => {
     email,
     category_list,
     custom_category_list,
-    edit_default_category,
+    edited_default_category,
   } = req.body;
   let { result, status } = await usersService.createUser(
     _id,
@@ -21,7 +21,7 @@ exports.addNewUser = async (req, res) => {
     email,
     category_list,
     custom_category_list,
-    edit_default_category
+    edited_default_category
   );
 
   if (!status) {
@@ -46,4 +46,17 @@ exports.getUserInfoByIdController = async (req, res) => {
     return res.status(400).json({ status: false, message: result.message });
   }
   return res.status(200).json({ status: true, result: result.result });
+};
+
+// Pull and push edited default category
+exports.pullAndPushDefaultCategory = async (req, res) => {
+  let { user_id, edited_default_category } = req.body;
+  let result = await usersService.pullAndPushManyDefaultCategory(
+    user_id,
+    edited_default_category
+  );
+  if (!result.status) {
+    return res.status(400).json({ status: false, message: result.message });
+  }
+  return res.status(200).json({ status: true, result: result.message });
 };

@@ -13,7 +13,7 @@ createUser = async (
   email,
   category_list,
   custom_category_list,
-  edit_default_category
+  edited_default_category
 ) => {
   let result = await Users.create({
     _id,
@@ -24,7 +24,7 @@ createUser = async (
     email,
     category_list,
     custom_category_list,
-    edit_default_category,
+    edited_default_category,
   });
   return { result, status: true };
 };
@@ -46,9 +46,99 @@ getUserInfoById = async (user_id) => {
   return { status: true, result: result };
 };
 
+// pull and push default category by user
+pullAndPushManyDefaultCategory = async (user_id, edited_categories) => {
+  let category_id_list = [];
+  let new_edited_default_category = [];
+  let edited_default_category = [];
+  let countModified = 0;
+
+  let userInfo = await Users.findOne({ _id: user_id });
+  let default_categories = userInfo.category_list;
+  let edited_default_category_in_DB = userInfo.edited_default_category;
+
+  // Check if edited category in user's default category  (`category_list`)
+  for (let category of edited_categories) {
+    if (default_categories.includes(category._id)) {
+      category_id_list.push(category._id);
+      new_edited_default_category.push(category);
+      continue;
+    }
+    edited_default_category.push(category);
+  }
+
+  // Push edited default category in to `edited_default_category` and pull them from `category_list`
+  const update = (items, items_id_list) => {
+    return {
+      $push: {
+        edited_default_category: {
+          $each: items,
+        },
+      },
+
+      $pull: {
+        category_list: { $in: items_id_list },
+      },
+    };
+  };
+
+  // Update old edited category
+  const update_2 = (item) => {
+    return {
+      $set: { "edited_default_category.$": item },
+    };
+  };
+
+  // Fillter for update old edited category
+  const filter_2 = (item, user_id) => {
+    return {
+      _id: user_id,
+      edited_default_category: edited_default_category_in_DB.filter(
+        (category, index) => category._id === item._id
+      )[0],
+    };
+  };
+
+  // if edited category still in default category. Then update
+  if (category_id_list.length > 0)
+    await Users.updateMany(
+      { _id: user_id },
+      update(new_edited_default_category, category_id_list)
+    )
+      .then((data) => {
+        if (data.nModified > 0) countModified++;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+  // if edited category are not in default category. Then update
+  if (edited_default_category.length > 0) {
+    for (let item of edited_default_category) {
+      await Users.updateOne(filter_2(item, user_id), update_2(item)).then(
+        (data) => {
+          if (data.nModified > 0) countModified++;
+        }
+      );
+    }
+  }
+
+  if (countModified > 0)
+    return {
+      status: true,
+      message: `Successfully update ${countModified} default category`,
+    };
+
+  return { status: true, message: "Not change at all" };
+};
+
+// Update Edited Default Category
+// pullAndPushManyDefaultCategory = async (user_id, edited_categories) => {
+// }
 const usersService = {
   createUser,
   getUserInfoById,
+  pullAndPushManyDefaultCategory,
 };
 
 module.exports = usersService;

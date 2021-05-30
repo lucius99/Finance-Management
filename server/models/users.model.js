@@ -32,7 +32,7 @@ const UsersSchema = new mongoose.Schema({
   },
   category_list: [{ type: ObjectId, ref: "Categories" }],
   custom_category_list: [{ type: ObjectId, ref: "CustomCategories" }],
-  edit_default_category: [{ type: Object }],
+  edited_default_category: [{ type: Object }],
   groups: [{ type: ObjectId, ref: "Groups" }],
 });
 module.exports = mongoose.model("Users", UsersSchema);

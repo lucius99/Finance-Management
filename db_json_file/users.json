@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "60b2f3332dae071f409ebd53"
+  },
+  "name": "user",
+  "age": 18,
+  "gender": "male",
+  "numberPhone": "0123456789",
+  "email": "abc@gmail.com",
+  "category_list": [
+    {
+      "$oid": "60b2f3332dae071f409ebd12"
+    },
+    {
+      "$oid": "60b2f3332dae071f409ebd13"
+    },
+    {
+      "$oid": "60b2f3332dae071f409ebd51"
+    },
+    {
+      "$oid": "60b2f3332dae071f409ebd11"
+    }
+  ],
+  "custom_category_list": [],
+  "groups": [],
+  "__v": 0,
+  "edited_default_category": []
+},{
+  "_id": {
+    "$oid": "60b2f3332dae071f409ebd57"
+  },
+  "name": "user_2",
+  "age": 22,
+  "gender": "female",
+  "numberPhone": "0345456789",
+  "email": "abc123@gmail.com",
+  "category_list": [],
+  "custom_category_list": [],
+  "groups": [],
+  "__v": 0,
+  "edited_default_category": []
+}]

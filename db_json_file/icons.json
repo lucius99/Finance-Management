@@ -1,0 +1,64 @@
+[{
+  "_id": {
+    "$oid": "60b0bd9c9787814d101b9684"
+  },
+  "icon_name": "cash-multiple",
+  "color": "#ffffff",
+  "bg_color": "#388e3d",
+  "alias": "Salary",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b0bdb09787814d101b9685"
+  },
+  "icon_name": "iframe",
+  "color": "#ffffff",
+  "bg_color": "#ea634e",
+  "alias": "Out Source",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b0bdc79787814d101b9686"
+  },
+  "icon_name": "account-clock-outline",
+  "color": "#ffffff",
+  "bg_color": "#00ace4",
+  "alias": "Freelance",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b0bddc9787814d101b9687"
+  },
+  "icon_name": "sale",
+  "color": "#f53c5c",
+  "bg_color": "#f6d09b",
+  "alias": "Interest Money",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b0bded9787814d101b9688"
+  },
+  "icon_name": "wallet-giftcard",
+  "color": "#e34e64",
+  "bg_color": "#c8daec",
+  "alias": "Gift",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b0bdfd9787814d101b9689"
+  },
+  "icon_name": "medal-outline",
+  "color": "#fdd329",
+  "bg_color": "#5fbbd2",
+  "alias": "Award",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b0be0f9787814d101b968a"
+  },
+  "icon_name": "chart-timeline-variant",
+  "color": "#45bfe3",
+  "bg_color": "#525b6c",
+  "alias": "Sale",
+  "__v": 0
+}]
