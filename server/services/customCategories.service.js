@@ -9,7 +9,7 @@ createCustomCategory = async (
   _id,
   name,
   icon_id,
-  type,
+  is_income,
   parent_id,
   user_id,
   onModel
@@ -18,7 +18,7 @@ createCustomCategory = async (
     _id,
     name,
     icon_id,
-    type,
+    is_income,
     parent_id,
     user_id,
     onModel,

@@ -19,8 +19,8 @@ const CustomCategoriesSchema = new mongoose.Schema({
     refPath: "onModel",
     default: null,
   },
-  type: {
-    type: String,
+  is_income: {
+    type: Boolean,
     required: true,
   },
   user_id: {

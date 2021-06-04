@@ -18,8 +18,8 @@ const TransactionsSchema = new mongoose.Schema({
   money: {
     type: Number,
   },
-  type: {
-    type: String,
+  is_income: {
+    type: Boolean,
   },
   description: {
     type: String,

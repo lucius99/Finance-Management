@@ -19,8 +19,8 @@ const CategoriesSchema = new mongoose.Schema({
     ref: "Categories",
     default: null,
   },
-  type: {
-    type: String,
+  is_income: {
+    type: Boolean,
     required: true,
   },
 });

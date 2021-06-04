@@ -1,50 +1,82 @@
-[
-  {
-    "_id": {
-      "$oid": "60b2f3332dae071f409ebd51"
-    },
-    "parent_id": null,
-    "name": "Salary",
-    "icon_id": {
-      "$oid": "60b0bd9c9787814d101b9684"
-    },
-    "type": "income",
-    "__v": 0
+[{
+  "_id": {
+    "$oid": "60b2f3332dae071f409ebd51"
   },
-  {
-    "_id": {
-      "$oid": "60b2f3332dae071f409ebd11"
-    },
-    "parent_id": null,
-    "name": "Out Source",
-    "icon_id": {
-      "$oid": "60b0bdb09787814d101b9685"
-    },
-    "type": "income",
-    "__v": 0
+  "parent_id": null,
+  "name": "Salary",
+  "icon_id": {
+    "$oid": "60b0bd9c9787814d101b9684"
   },
-  {
-    "_id": {
-      "$oid": "60b2f3332dae071f409ebd12"
-    },
-    "parent_id": null,
-    "name": "Freelance",
-    "icon_id": {
-      "$oid": "60b0bdc79787814d101b9686"
-    },
-    "type": "income",
-    "__v": 0
+  "type": "income",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b2f3332dae071f409ebd11"
   },
-  {
-    "_id": {
-      "$oid": "60b2f3332dae071f409ebd13"
-    },
-    "parent_id": null,
-    "name": "Gift",
-    "icon_id": {
-      "$oid": "60b0bded9787814d101b9688"
-    },
-    "type": "income",
-    "__v": 0
-  }
-]
+  "parent_id": null,
+  "name": "Out Source",
+  "icon_id": {
+    "$oid": "60b0bdb09787814d101b9685"
+  },
+  "type": "income",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b2f3332dae071f409ebd12"
+  },
+  "parent_id": null,
+  "name": "Freelance",
+  "icon_id": {
+    "$oid": "60b0bdc79787814d101b9686"
+  },
+  "type": "income",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b2f3332dae071f409ebd13"
+  },
+  "parent_id": null,
+  "name": "Gift",
+  "icon_id": {
+    "$oid": "60b0bded9787814d101b9688"
+  },
+  "type": "income",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b2f3332dae071f409ebd15"
+  },
+  "parent_id": {
+    "$oid": "60b2f3332dae071f409ebd51"
+  },
+  "name": "Sale",
+  "icon_id": {
+    "$oid": "60b0be0f9787814d101b968a"
+  },
+  "type": "income",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b2f3332dae071f409ebd16"
+  },
+  "parent_id": null,
+  "name": "Bill",
+  "icon_id": {
+    "$oid": "60b2f3332dae071f409ebd90"
+  },
+  "type": "expense",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b2f3332dae071f409ebd17"
+  },
+  "parent_id": {
+    "$oid": "60b2f3332dae071f409ebd51"
+  },
+  "name": "Award",
+  "icon_id": {
+    "$oid": "60b2f3332dae071f409ebd91"
+  },
+  "type": "income",
+  "__v": 0
+}]

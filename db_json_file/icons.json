@@ -61,4 +61,22 @@
   "bg_color": "#525b6c",
   "alias": "Sale",
   "__v": 0
+},{
+  "_id": {
+    "$oid": "60b2f3332dae071f409ebd90"
+  },
+  "icon_name": "cash-usd-outline",
+  "color": "white",
+  "bg_color": "#00be76",
+  "alias": "Bill",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b2f3332dae071f409ebd91"
+  },
+  "icon_name": "medal-outline",
+  "color": "#fdd329",
+  "bg_color": "#5fbbd2",
+  "alias": "Award",
+  "__v": 0
 }]

@@ -4,12 +4,12 @@ const db = require("../models");
 const Categories = db.categories;
 
 // Use to create new default category (parent or child)
-createCategory = async (_id, name, icon_id, type, parent_id = null) => {
+createCategory = async (_id, name, icon_id, is_income, parent_id = null) => {
   let result = await Categories.create({
     _id,
     name,
     icon_id,
-    type,
+    is_income,
     parent_id,
   });
   return { result, status: true };
@@ -46,9 +46,25 @@ getCategoryInfoById = async (category_id) => {
   return { status: true, result: result };
 };
 
+getAllCategory = async () => {
+  let result = await Categories.find({}, (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+  })
+    .populate({ path: "icon_id", select: "-_id -__v" })
+    .select("-__v");
+
+  if (!result) {
+    return { status: false, message: "Something went wrong" };
+  }
+  return { status: true, result: result };
+};
+
 const categoriesService = {
   createCategory,
   getCategoryInfoById,
+  getAllCategory,
 };
 
 module.exports = categoriesService;
